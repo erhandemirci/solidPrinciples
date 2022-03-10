@@ -27,3 +27,68 @@ class I: UIViewController {
     */
 
 }
+
+protocol IBaseWorker
+{
+    var ID:String {get set}
+    var Name:String {get set}
+    var Email:String {get set}
+}
+
+protocol IFullTimeWorkerSalary : IBaseWorker
+{
+
+    var MonthlySalary:Float {get set}
+    var OtherBenefits:Float {get set}
+    func CalculateNetSalary()->Float
+
+}
+
+protocol IContractWorkerSalary : IBaseWorker
+{
+    var HourlyRate:Float {get set}
+    var HoursInMonth:Float {get set}
+    func CalculateWorkedSalary()->Float
+
+}
+struct FullTimeEmployeeFixed:IFullTimeWorkerSalary
+{
+    var MonthlySalary: Float
+    
+    var OtherBenefits: Float
+    
+    func CalculateNetSalary() -> Float {
+        
+        return MonthlySalary + OtherBenefits
+        
+    }
+    
+    var ID: String
+    
+    var Name: String
+    
+    var Email: String
+    
+    
+}
+struct ContractEmployeeFixed:IContractWorkerSalary
+{
+    var HourlyRate: Float
+    
+    var HoursInMonth: Float
+    
+    func CalculateWorkedSalary() -> Float {
+        return HourlyRate * HoursInMonth
+    }
+    
+    var ID: String
+    
+    var Name: String
+    
+    var Email: String
+    
+    
+}
+
+
+

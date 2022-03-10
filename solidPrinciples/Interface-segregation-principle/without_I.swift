@@ -7,6 +7,13 @@
 
 import UIKit
 
+/*
+ This program does not follow ISP because the FullTimeEmployee class does not need the CalculateWorkedSalary() function, and the ContractEmployeeclass does not need the CalculateNetSalary().
+ */
+
+
+
+
 class without_I: UIViewController {
 
     override func viewDidLoad() {
@@ -31,9 +38,9 @@ protocol IWorker
     
 }
 
-public class FullTimeEmployee : IWorker
+struct FullTimeEmployee:IWorker
 {
-    var ID: String 
+    var ID: String
     
     var Name: String
     
@@ -48,41 +55,40 @@ public class FullTimeEmployee : IWorker
     var HoursInMonth: Float
     
     func CalculateNetSalary() -> Float {
-        <#code#>
+        return MonthlySalary + OtherBenefits
     }
     
     func CalculateWorkedSalary() -> Float {
-        <#code#>
+        return 0.0
     }
     
     
 }
-  
-  public class ContractEmployee : IWorker
+struct ContractEmployee:IWorker
 {
-      var ID: String = ""
-      
-      var Name: String = ""
-      
-      var Email: String = ""
-      
-      var MonthlySalary: Float = 0.0
-      
-      var OtherBenefits: Float = 0.0
-      
-      var HourlyRate: Float = 0.0
-      
-      var HoursInMonth: Float = 0.0
-      
-      func CalculateNetSalary() -> Float {
-          <#code#>
-      }
-      
-      func CalculateWorkedSalary() -> Float {
-          <#code#>
-      }
-      
-     
-  }
+    var ID: String
+    
+    var Name: String
+    
+    var Email: String
+    
+    var MonthlySalary: Float
+    
+    var OtherBenefits: Float
+    
+    var HourlyRate: Float
+    
+    var HoursInMonth: Float
+    
+    func CalculateNetSalary() -> Float {
+        return 0.0
+    }
+    
+    func CalculateWorkedSalary() -> Float {
+        return HourlyRate * HoursInMonth
+    }
 
+}
+  
+  
 
