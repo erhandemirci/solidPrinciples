@@ -4,7 +4,7 @@
 //
 //  Created by erhan demirci on 10.03.2022.
 //
-
+//yu
 import UIKit
 
 class without_D: UIViewController {
