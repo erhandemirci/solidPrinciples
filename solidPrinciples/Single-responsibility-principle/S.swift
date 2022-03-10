@@ -15,6 +15,8 @@ class S: UIViewController {
         var registerService=RegisterService()
         registerService.RegisterUser(username: "admin")
         
+      
+        
     }
     
 
@@ -87,4 +89,7 @@ public class emailService:NSObject
         print("mail sending")
     }
 }
+
+
+
 

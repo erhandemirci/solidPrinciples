@@ -4,6 +4,12 @@
 //
 //  Created by erhan demirci on 10.03.2022.
 //
+/*
+ Objects in a program should be replaceable with instances of their subtypes without altering the correctness of that program.”
+ This does not follow LSP because the Orange class could not replace the Apple class without altering the program output. The GetColor() method is overridden by the Orange class and therefore would return that an apple is orange.
+ 
+ */
+
 
 import UIKit
 
@@ -13,17 +19,28 @@ class without_L: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        var apple=Apple().GetColor()
+        var orange=Orange().GetColor()
+        print(apple,orange)
     }
-    
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
+fileprivate class Apple
+{
+    public func GetColor()->String
+    {
+        return "Red";
+    }
+}
+fileprivate class Orange : Apple
+{
+    public override func GetColor() -> String {
+        return "Orange"
+    }
+}
+
+
+    
+

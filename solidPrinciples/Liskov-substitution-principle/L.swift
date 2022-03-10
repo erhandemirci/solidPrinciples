@@ -7,12 +7,18 @@
 
 import UIKit
 
+
+
 class L: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        var apple=Apple().GetColor()
+        var orange=Orange().GetColor()
+        print(apple,orange)
+        
     }
     
 
@@ -27,3 +33,30 @@ class L: UIViewController {
     */
 
 }
+
+protocol Fruit
+{
+    func GetColor()->String
+}
+
+fileprivate class Apple:Fruit
+{
+    func GetColor() -> String {
+        return "Red";
+    }
+    
+   
+}
+fileprivate class Orange:Fruit
+{
+    func GetColor() -> String {
+        return "Orange";
+    }
+    
+    
+}
+
+
+
+
+    
