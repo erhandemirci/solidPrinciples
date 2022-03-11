@@ -14,16 +14,49 @@ class D: UIViewController {
 
         // Do any additional setup after loading the view.
     }
+  
+}
+
+
+protocol ICustomerDataAccess
+{
     
+    func GetCustomerName(id:Int)->String
+}
 
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+public class CustomerDataAccess: ICustomerDataAccess
+{
+    public func CustomerDataAccess() {   }
+    
+    func GetCustomerName(id:Int)->String
+    {
+        return "Dummy Customer Name";
     }
-    */
 
 }
+
+
+
+public class DataAccessFactory{
+    
+    static func GetCustomerDataAccessObj()->ICustomerDataAccess
+    {
+        return CustomerDataAccess()
+    }
+}
+
+
+public class CustomerBusinessLogic{
+    var _custDataAccess:ICustomerDataAccess!
+    public func CustomerBusinessLogic(){
+        _custDataAccess = DataAccessFactory.GetCustomerDataAccessObj()
+    }
+    public func GetCustomerName(id:Int)->String
+    {
+        return _custDataAccess.GetCustomerName(id: id)
+    }
+ 
+}
+
+
