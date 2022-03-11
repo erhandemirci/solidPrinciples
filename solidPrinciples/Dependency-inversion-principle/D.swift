@@ -13,6 +13,10 @@ class D: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        var cbl=CustomerBusinessLogic()
+        //cbl.GetCustomerName(id: 1)
+        
     }
   
 }
@@ -27,10 +31,13 @@ protocol ICustomerDataAccess
 
 public class CustomerDataAccess: ICustomerDataAccess
 {
-    public func CustomerDataAccess() {   }
+    init() {
+        print("CustomerDataAccess class init is worked ")
+    }
     
     func GetCustomerName(id:Int)->String
     {
+        print("CustomerDataAccess GetCustomerName(id) is worked ")
         return "Dummy Customer Name";
     }
 
@@ -42,6 +49,7 @@ public class DataAccessFactory{
     
     static func GetCustomerDataAccessObj()->ICustomerDataAccess
     {
+        print("DataAccessFactory GetCustomerDataAccessObj() is worked ")
         return CustomerDataAccess()
     }
 }
@@ -49,9 +57,14 @@ public class DataAccessFactory{
 
 public class CustomerBusinessLogic{
     var _custDataAccess:ICustomerDataAccess!
-    public func CustomerBusinessLogic(){
+    init()
+    {
         _custDataAccess = DataAccessFactory.GetCustomerDataAccessObj()
+        print("CustomerBusinessLogic init is worked ")
+        
+        
     }
+    
     public func GetCustomerName(id:Int)->String
     {
         return _custDataAccess.GetCustomerName(id: id)
